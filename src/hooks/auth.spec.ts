@@ -35,4 +35,18 @@ describe('Auth Hook', () => {
 
     expect(result.current.user.email).toBe(userTest.email);
   });
+
+  it('user should not connect if cancel authentication with Google', async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(userTest));
+
+    const { result } = renderHook(() => useAuth(), {
+      wrapper: AuthProvider,
+    });
+
+    await act(() => result.current.signInWithGoogle());
+
+    console.log('user', result.current.user);
+
+    expect(result.current.user.id).toEqual('any_id');
+  });
 });
