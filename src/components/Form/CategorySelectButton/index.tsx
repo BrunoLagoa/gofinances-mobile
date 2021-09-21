@@ -1,16 +1,18 @@
-import React from "react";
-import { Container, Category, Icon } from "./styles";
+import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
-interface Props {
+import { Container, Category, Icon } from './styles';
+
+interface Props extends RectButtonProps {
   title: string;
   onPress: () => void;
 }
 
-function CategorySelectButton({ title, onPress }: Props) {
+function CategorySelectButton({ title, testID, onPress }: Props) {
   return (
-    <Container onPress={onPress}>
+    <Container onPress={onPress} testID={testID}>
       <Category>{title}</Category>
-      <Icon name="chevron-down" />
+      <Icon name='chevron-down' />
     </Container>
   );
 }

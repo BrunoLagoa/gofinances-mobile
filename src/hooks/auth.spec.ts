@@ -45,8 +45,6 @@ describe('Auth Hook', () => {
 
     await act(() => result.current.signInWithGoogle());
 
-    console.log('user', result.current.user);
-
     expect(result.current.user.id).toEqual('any_id');
   });
 });
